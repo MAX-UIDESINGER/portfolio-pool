@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,5 +19,43 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Manrope', Arial, Helvetica, sans-serif;
 }
+
+
+.northern-lights {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.northern-light {
+  position: absolute;
+  width: 200vw; /* antes 100vw */
+  height: 200vh; /* antes 100vh */
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 255, 191, 0.25), /* más opacidad */
+    transparent 70%
+  );
+  animation: move var(--duration, 10s) ease-in-out infinite alternate;
+  left: calc(var(--x, 0) * 10%);
+  top: calc(var(--y, 0) * 10%);
+  transform: scale(var(--scale, 0.1)); /* escala base mayor */
+  filter: blur(120px); /* antes 60px */
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(0) scale(var(--scale, 0.05));
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-10%) scale(var(--scale, 0.05));
+    opacity: 0.6;
+  }
+}
+
