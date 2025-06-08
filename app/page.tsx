@@ -21,7 +21,6 @@ async function getRepos() {
     "Colpex2.0App_FireBase": "/images/COLPEX_APP.webp",
     "MAX-UIDESINGER": "/images/CARTA_DIGITAL.webp",
     "SistemaInventario2023_UEHOSPSUPE": "/images/HOSPISUPE.webp",
-    "WEB-PRODUCT": "/images/WEB_INFOMATICA.webp",
   };
 
   // Repos de GitHub
