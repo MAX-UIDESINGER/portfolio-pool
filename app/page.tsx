@@ -19,8 +19,6 @@ async function getRepos() {
     "Caja-web": "/images/CARTA_DIGITAL.webp",
     "Carta-Gourmet": "/images/CARTA_GOURMET.webp",
     "Colpex2.0App_FireBase": "/images/COLPEX_APP.webp",
-    "dashboard-store": "/images/CARTA_DIGITAL.webp",
-    "github-slideshow": "/images/CARTA_DIGITAL.webp",
     "MAX-UIDESINGER": "/images/CARTA_DIGITAL.webp",
     "SistemaInventario2023_UEHOSPSUPE": "/images/HOSPISUPE.webp",
     "WEB-PRODUCT": "/images/WEB_INFOMATICA.webp",
@@ -34,7 +32,7 @@ async function getRepos() {
       name: repo.name,
       description: repo.description,
       url: repo.html_url,
-      image: repoImages[repo.name] || '/images/default.webp', // Usa la imagen personalizada o una por defecto
+      image: repoImages[repo.name] || '/images/NO_FOTO.webp', // Usa la imagen personalizada o una por defecto
       language: repo.language || 'Desconocido',
       homepage: repo.homepage,
       topics: repo.topics,

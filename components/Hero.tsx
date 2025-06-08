@@ -27,31 +27,6 @@ const Hero = ({ repos }: { repos: Repo[] }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedRepo, setSelectedRepo] = useState<Repo | null>(null);
 
-  // Función para detectar si es móvil
-  const isMobile = () => {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  };
-
-  // Función principal de contacto
-  const handleContact = () => {
-    const whatsappNumber = "51906099090"; // Cambia por tu número real
-    const message = "¡Hola Pool! Me interesa trabajar contigo en un proyecto web. ¿Podemos conversar?";
-    const email = "maxcuba773@gmail.com";
-    const subject = "Consulta sobre desarrollo web";
-    const body = "Hola Pool,%0D%0A%0D%0AMe interesa trabajar contigo en un proyecto web. Me gustaría conocer más sobre tus servicios.%0D%0A%0D%0ASaludos!";
-
-    if (isMobile()) {
-      // En móvil: abrir WhatsApp
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');
-    } else {
-      // En desktop: abrir email
-      const emailUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${body}`;
-      window.location.href = emailUrl;
-    }
-  };
-
-
   // Función específica para WhatsApp
   const handleWhatsApp = () => {
     const whatsappNumber = "51906099090"; // Cambia por tu número real
