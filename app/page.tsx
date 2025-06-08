@@ -19,7 +19,6 @@ async function getRepos() {
     "Caja-web": "/images/CARTA_DIGITAL.webp",
     "Carta-Gourmet": "/images/CARTA_GOURMET.webp",
     "Colpex2.0App_FireBase": "/images/COLPEX_APP.webp",
-    "MAX-UIDESINGER": "/images/CARTA_DIGITAL.webp",
     "SistemaInventario2023_UEHOSPSUPE": "/images/HOSPISUPE.webp",
   };
 
