@@ -1,9 +1,10 @@
 "use client";
 
-import { Calendar, ExternalLink, Download, MapPin, Github, Linkedin, Mail, Menu, X, ChevronUp, MessageCircle } from 'lucide-react';
+import { ExternalLink, Download, MapPin, Github, Linkedin, Mail, ChevronUp, MessageCircle } from 'lucide-react';
 import { Code, Database, Terminal, Settings, Monitor, Server, Smartphone, Globe } from "lucide-react";
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { handleGmail } from '../utils/handleGmail';
 
 export interface Repo {
   productionUrl: any;
@@ -21,6 +22,7 @@ export interface Repo {
   updated_at?: string;
 }
 
+
 const Hero = ({ repos }: { repos: Repo[] }) => {
   const [activeSection, setActiveSection] = useState('proyectos');
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -35,28 +37,7 @@ const Hero = ({ repos }: { repos: Repo[] }) => {
     window.open(whatsappUrl, '_blank');
   };
 
-  const handleGmail = () => {
-    const email = "maxcuba773@gmail.com";
-    const subject = "Consulta sobre desarrollo web";
-    const body = "Hola Pool,%0D%0A%0D%0AMe interesa trabajar contigo en un proyecto web. Me gustaría conocer más sobre tus servicios.%0D%0A%0D%0ASaludos!";
-    const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${body}`;
-    const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${body}`;
 
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      // En móvil, intenta abrir Gmail app (solo Android), si no, usa mailto
-      if (navigator.userAgent.toLowerCase().includes("android")) {
-        window.location.href = `intent://compose?to=${email}&subject=${encodeURIComponent(subject)}&body=${body}#Intent;scheme=mailto;package=com.google.android.gm;end`;
-        setTimeout(() => {
-          window.location.href = mailtoUrl;
-        }, 500);
-      } else {
-        window.location.href = mailtoUrl;
-      }
-    } else {
-      // En escritorio, abre Gmail web
-      window.open(gmailWebUrl, "_blank");
-    }
-  };
 
   const skillCategories = [
     {
@@ -342,7 +323,10 @@ const Hero = ({ repos }: { repos: Repo[] }) => {
                 {/* Info adicional */}
                 <div className="mt-4 pt-4 border-t border-gray-800/50">
                   <div className="flex items-center justify-between text-xs text-gray-400">
-                    <span>Respuesta en 24h</span>
+                    <div className="space-y-1">
+                      <div>Horarios de atención: 8:00 AM - 6:00 PM</div>
+                      <div>Horario de almuerzo: 1:00 PM - 2:00 PM</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -457,7 +441,7 @@ const Hero = ({ repos }: { repos: Repo[] }) => {
                   >
                     <div className="flex flex-col sm:flex-row sm:items-start space-y-4 sm:space-y-0 sm:space-x-4 md:space-x-6">
                       {/* Imagen del proyecto */}
-                      <div className="w-full sm:w-24 md:w-32 h-32 sm:h-18 md:h-24 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800 rounded-xl overflow-hidden flex-shrink-0 flex items-center justify-center relative">
+                      <div className="w-full sm:w-24 md:w-32 h-40 sm:h-18 md:h-24 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800 rounded-xl overflow-hidden flex-shrink-0 flex items-center justify-center relative">
                         {repo.image ? (
                           <img
                             src={repo.image}
@@ -753,103 +737,6 @@ const Hero = ({ repos }: { repos: Repo[] }) => {
 
       </main>
 
-      {/* Footer Mejorado */}
-      <footer className="relative mt-20 bg-gray-950/50 backdrop-blur-md border-t border-gray-800/50">
-        {/* Northern Lights para el footer */}
-        <div className="northern-lights pointer-events-none absolute inset-0 opacity-30">
-          <div className="northern-light" style={{ '--duration': '25s', '--delay': '5s', '--x': 20, '--y': 20, '--scale': 0.4 } as React.CSSProperties}></div>
-          <div className="northern-light" style={{ '--duration': '30s', '--delay': '10s', '--x': 80, '--y': 60, '--scale': 0.5 } as React.CSSProperties}></div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-
-            {/* Logo y Descripción */}
-            <div className="md:col-span-2">
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 via-purple-600 to-teal-500 flex items-center justify-center">
-                  <span className="text-lg font-bold text-white">PM</span>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold">Pool Martin</h3>
-                  <p className="text-sm text-gray-400">Ing. Sistemas & infomatico</p>
-                </div>
-              </div>
-              <p className="text-gray-300 text-sm leading-relaxed mb-6 max-w-md">
-                Especializado en crear experiencias digitales únicas y funcionales.
-                Transformo ideas en interfaces modernas y atractivas que conectan con los usuarios.
-              </p>
-
-              {/* Redes Sociales */}
-              <div className="flex space-x-4">
-                <div className="p-3 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 cursor-pointer transition-all hover:scale-110">
-                  <Github className="w-5 h-5 text-gray-400 hover:text-white transition-colors" />
-                </div>
-                <div className="p-3 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 cursor-pointer transition-all hover:scale-110">
-                  <Linkedin className="w-5 h-5 text-gray-400 hover:text-blue-500 transition-colors" />
-                </div>
-                <div className="p-3 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 cursor-pointer transition-all hover:scale-110">
-                  <Mail className="w-5 h-5 text-gray-400 hover:text-green-400 transition-colors" />
-                </div>
-              </div>
-            </div>
-
-            {/* Servicios */}
-            <div>
-              <h4 className="font-semibold text-white mb-4 flex items-center">
-                <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                Servicios
-              </h4>
-              <ul className="space-y-3 text-sm">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Diseño Web</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Desarrollo Frontend</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Consultoría</a></li>
-              </ul>
-            </div>
-
-            {/* Contacto */}
-            <div>
-              <h4 className="font-semibold text-white mb-4 flex items-center">
-                <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
-                Contacto
-              </h4>
-              <div className="space-y-3 text-sm">
-                <div className="flex items-center space-x-2 text-gray-400">
-                  <MapPin className="w-4 h-4" />
-                  <span>Limas, Perù</span>
-                </div>
-                <div className="flex items-center space-x-2 text-gray-400">
-                  <Mail className="w-4 h-4" />
-                  <span>maxcuba773@gmail.com</span>
-                </div>
-                <div className="flex items-center space-x-2 text-green-400">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                  <span>Disponible para proyectos</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Separador */}
-          <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-8"></div>
-
-          {/* Bottom Footer */}
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2025 Pool Martin C. Nuñez. Todos los derechos reservados.
-            </div>
-
-            <div className="flex items-center space-x-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                Política de Privacidad
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                Términos de Uso
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
 
       {/* Scroll to Top Button */}
       {showScrollTop && (

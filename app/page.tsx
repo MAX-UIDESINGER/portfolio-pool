@@ -46,7 +46,7 @@ async function getRepos() {
     {
       id: 826752137,
       name: 'Qiosco',
-      description: 'sitio web  con React y MAterial Mui.',
+      description: 'Plataforma de pagos multi-método con React/Material-UI. Acepta American Express, Mastercard, Izipay y Niubiz para consulta de precios y transacciones.',
       url: 'https://qiosco.infomatica.pe/',
       image: '/images/QIOSCO.webp',
       language: 'TypeScript',
@@ -60,7 +60,7 @@ async function getRepos() {
     },
     {
       id: 826752138,
-      name: 'web Infomatica',
+      name: 'web INFOmatica',
       description: 'Tienda hecha con React y Stripe.',
       url: 'https://www.test.infomatica.pe/',
       image: '/images/WEB_INFOMATICA.webp',
@@ -72,6 +72,21 @@ async function getRepos() {
       updated_at: '',
       isPrivate: false,
       productionUrl: 'https://www.test.infomatica.pe/',
+    },
+     {
+      id: 826752139,
+      name: 'INFOback web',
+     description: 'Aplicación web para administración de inventarios, seguimiento de productos y gestión logística. Desarrollada con React y procesamiento de pagos via Stripe.',
+      url: 'https://infoback.pe/',
+      image: '/images/INFOBACK.webp',
+      language: 'TypeScript',
+      homepage: '',
+      topics: [],
+      stargazers_count: 0,
+      forks_count: 0,
+      updated_at: '',
+      isPrivate: false,
+      productionUrl: 'https://infoback.pe/',
     },
   ];
 
