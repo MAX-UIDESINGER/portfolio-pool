@@ -4,7 +4,7 @@ import { handleGmail } from '../utils/handleGmail';
 
 const Footer = () => {
   return (
-    <footer className="relative  bg-gray-950/50 backdrop-blur-md border-t border-gray-800/50">
+    <footer className="relative  bg-gray-900/30 backdrop-blur-md   border border-gray-800/50  ">
       {/* Northern Lights para el footer */}
       <div className="northern-lights pointer-events-none absolute inset-0 opacity-30">
         <div className="northern-light" style={{ '--duration': '25s', '--delay': '5s', '--x': 20, '--y': 20, '--scale': 0.4 } as React.CSSProperties}></div>
