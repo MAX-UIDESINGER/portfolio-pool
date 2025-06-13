@@ -1,6 +1,5 @@
 "use client";
 import Hero from "@/components/Hero";
-import Example from "@/components/hola";
 import { customRepos } from "@/data/customRepos";
 import { useGithubRepos } from "@/hooks/useGithubRepos";
 
@@ -10,9 +9,7 @@ export default function Home() {
 
   return (
     <main className="overflow-hidden">
-
-       <Hero repos={allRepos} loading={loading} />
-    
+      <Hero repos={allRepos} loading={loading} />
     </main>
   );
 }

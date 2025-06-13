@@ -4,58 +4,183 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+/* Variables CSS para temas */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Configuración de la transición de tema */
+@layer base {
+  * {
+    border-color: var(--border); /* Solución aquí */
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Manrope', Arial, Helvetica, sans-serif;
+  }
+}
+
+/* Animaciones personalizadas */
+@layer utilities {
+  @keyframes lava-lamp {
+    0%, 100% {
+      transform: rotate(0deg) scale(1);
+    }
+    33% {
+      transform: rotate(120deg) scale(1.1);
+    }
+    66% {
+      transform: rotate(240deg) scale(0.9);
+    }
+  }
+
+  .animate-lava-lamp {
+    animation: lava-lamp 20s ease-in-out infinite;
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+
+  /* Efectos de Northern Lights */
+  .northern-lights {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .northern-light {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.6) 0%, rgba(0, 255, 255, 0.2) 30%, transparent 70%);
+    animation: northern-lights var(--duration, 15s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+    left: calc(var(--x, 50) * 1%);
+    top: calc(var(--y, 50) * 1%);
+    transform: scale(var(--scale, 1));
+  }
+
+  @keyframes northern-lights {
+    0%, 100% {
+      transform: translate(0, 0) scale(var(--scale, 1));
+      opacity: 0.3;
+    }
+    25% {
+      transform: translate(30px, -20px) scale(calc(var(--scale, 1) * 1.2));
+      opacity: 0.6;
+    }
+    50% {
+      transform: translate(-20px, 40px) scale(calc(var(--scale, 1) * 0.8));
+      opacity: 0.4;
+    }
+    75% {
+      transform: translate(40px, 20px) scale(calc(var(--scale, 1) * 1.1));
+      opacity: 0.7;
+    }
+  }
+
+  /* Mejoras de rendimiento */
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  /* Estilo para el scroll */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-lg;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+  }
+
+  /* Prevenir flash de contenido sin estilo */
+  .theme-transition {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: 'Manrope', Arial, Helvetica, sans-serif;
+  @apply relative overflow-x-hidden overflow-y-auto transition-colors;
 }
 
-
-.northern-lights {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 0;
+.bg-background {
+  background-color: hsl(var(--background) / 0.8);
 }
-
-.northern-light {
-  position: absolute;
-  width: 200vw; /* antes 100vw */
-  height: 200vh; /* antes 100vh */
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0, 255, 191, 0.25), /* más opacidad */
-    transparent 70%
-  );
-  animation: move var(--duration, 10s) ease-in-out infinite alternate;
-  left: calc(var(--x, 0) * 10%);
-  top: calc(var(--y, 0) * 10%);
-  transform: scale(var(--scale, 0.1)); /* escala base mayor */
-  filter: blur(120px); /* antes 60px */
-  pointer-events: none;
-  z-index: 1;
+.text-foreground {
+  color: hsl(var(--foreground));
 }
-
-@keyframes move {
-  0% {
-    transform: translateY(0) scale(var(--scale, 0.05));
-    opacity: 0.3;
-  }
-  100% {
-    transform: translateY(-10%) scale(var(--scale, 0.05));
-    opacity: 0.6;
-  }
+.border-border {
+  border-color: hsl(var(--border) / 0.5);
 }
-
